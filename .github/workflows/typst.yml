@@ -1,0 +1,43 @@
+name: Release
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number in the format `v1.2.3`'
+        required: true
+        type: string
+permissions:
+  contents: write
+  packages: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Typst
+        uses: typst-community/setup-typst@v3
+        with:
+          typst-version: 0.13
+          cache-dependency-path: requirements.typ
+      - name: Compile Typst files
+        run: |
+          typst compile main.typ sula-alus-rfc.pdf
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF
+          path: "*.pdf"
+      - name: Get current date
+        id: date
+        run: echo "DATE=$(date +%Y-%m-%d-%H:%M)" >> $GITHUB_ENV
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: github.ref_type == 'tag'
+        with:
+          name: "${{ github.ref_name }} — ${{ env.DATE }}"
+          files: |
+            sula-alus-rfc.pdf

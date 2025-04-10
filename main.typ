@@ -1,6 +1,5 @@
 #let fill = box(width: 1fr, repeat(sym.space))
 
-
 #set heading(numbering: "1.1.")
 #show heading: set text(12pt)
 
@@ -8,7 +7,6 @@
   it.element.location(),
   it.indented(it.prefix(), it.body()),
 )
-
 
 #set par(justify: true)
 
