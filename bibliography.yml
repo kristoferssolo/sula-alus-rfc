@@ -1,0 +1,5 @@
+rfc-2119:
+  type: Book
+  title: Key words for use in RFCs to Indicate Requirement Levels
+  author: S. Bradner
+  date: 1997-03
