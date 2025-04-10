@@ -69,11 +69,15 @@ the decryption operation -- they both consist of reversing the input sequence.
 == Encryption Process
 
 Let $P$ represent the plaintext composed of a sequence of characters:
+
 $ P = p_1, p_2, ..., p_n $
 
 The ciphertext $C$ is produced by applying the reversal transformation:
+
 $ C = "reverse"(P) = p_n, p_(n-1), ..., p_1 $
+
 For example, if $P = "sula"$, then:
+
 $ C = "alus" $
 
 == Decryption Process
@@ -81,6 +85,7 @@ $ C = "alus" $
 Given that the reversal operation is an involution (its own inverse), the
 decryption process involves applying the same transformation.
 Let $C$ be the ciphertext; then the plaintext $P$ is recovered as:
+
 $ P = "reverse"(C) $
 
 = Implementation Considerations
@@ -89,10 +94,10 @@ A simple pseudocode implementation of the algorithm is as follows:
 
 ```
 function encrypt(plaintext):
-return reverse(plaintext)
+    return reverse(plaintext)
 
 function decrypt(ciphertext):
-return reverse(ciphertext)
+    return reverse(ciphertext)
 ```
 
 This algorithm may be implemented in any programming language.

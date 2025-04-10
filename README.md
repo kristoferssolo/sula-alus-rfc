@@ -43,17 +43,23 @@ the input sequence.
 ## Encryption Process
 
 Let $P$ represent the plaintext composed of a sequence of characters:
+
 $$P = p_{1},p_{2},\ldots,p_{n}$$
 
 The ciphertext $C$ is produced by applying the reversal transformation:
-$$C = \text{ reverse}(P) = p_{n},p_{n - 1},\ldots,p_{1}$$ For example,
-if $P = \text{ sula}$, then: $$C = \text{ alus }$$
+
+$$C = \text{ reverse}(P) = p_{n},p_{n - 1},\ldots,p_{1}$$
+
+For example, if $P = \text{ sula}$, then:
+
+$$C = \text{ alus }$$
 
 ## Decryption Process
 
 Given that the reversal operation is an involution (its own inverse),
 the decryption process involves applying the same transformation. Let
 $C$ be the ciphertext; then the plaintext $P$ is recovered as:
+
 $$P = \text{ reverse}(C)$$
 
 # Implementation Considerations
@@ -61,10 +67,10 @@ $$P = \text{ reverse}(C)$$
 A simple pseudocode implementation of the algorithm is as follows:
 
     function encrypt(plaintext):
-    return reverse(plaintext)
+        return reverse(plaintext)
 
     function decrypt(ciphertext):
-    return reverse(ciphertext)
+        return reverse(ciphertext)
 
 This algorithm may be implemented in any programming language. It is
 important to note that due to its simplicity, SULA-ALUS is only
